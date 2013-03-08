@@ -5,7 +5,7 @@ post.php						处理POST提交
 common.php						公共
 
 field.php						字段局部视图
-
+  
 
 entity/							实体文件夹
 	common.php						公共实体
