@@ -1,0 +1,100 @@
+list.php						列表页
+form.php						表单页
+detail.php						详细页
+post.php						处理POST提交
+common.php						公共
+
+field.php						字段局部视图
+
+
+entity/							实体文件夹
+	common.php						公共实体
+	custom.php						自定义实体
+	resource.php					资源实体
+
+widget/							控件文件夹
+	view/
+		layout.php
+
+	html/
+		input.php
+		select.php
+		radio.php
+		checkbox.php
+		textarea.php
+		password.php
+		file.php
+
+		view/
+			layout.php			布局视图
+			list.php			列表视图
+			form.php			表单视图
+			detail.php			详细视图
+			
+			other/
+				filter.php		过滤器视图
+				filter_field.php	过滤器字段视图
+				form_header.php		表单顶部视图
+				form_footer.php		表单底部视图
+				list_action.php		列表操作视图
+				list_batch_action.php	列表批量操作视图
+				list_header.php		列表顶部视图
+				list_footer.php		列表底部视图
+				pagination.php		分页视图
+
+	bootstrap/					从html上衍生出
+		input.php
+		select.php
+		...
+	easyui/						从html上衍生出
+		combobox.php
+		combotree.php
+		combogrid.php
+		numberbox.php
+		datebox.php
+	extjs/
+	flex/
+	custom/
+		select_user.php
+		select_single_user.php
+		select_dept.php
+		select_single_dept.php
+
+
+
+---------------------------------
+分层
+---------------------------------
+配置层		
+数据访问层	
+控制层		
+视图层
+
+
+
+结合方式：
+---------------------------------------------------------
+返回方式	复杂度	结合性	可控性
+---------------------------------------------------------
+大文本		3	1	0
+PHP数组		2	1	1
+JSON数组	1	2	0
+
+表达式：
+[field_name]	表示字段
+{last_id}	表示插入返回的ID值
+
+访问URI：
+list.php?entity=resource		列表（个人、部门、所有）
+form.php?entity=resource&id=x		表单（编辑、添加）
+detail.php?entity=resource&id=x		详细
+post.php?entity=resource		处理表单提交
+batch.php?entity=resource		处理批量处理提交
+delete.php?entity=resource&id=x		处理删除记录
+
+万能审批：
+
+
+
+-------------------------------------
+
