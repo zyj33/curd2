@@ -1,8 +1,41 @@
 <?php
 include('common.php');
+header('Content-Type: text/html; charset=utf-8'); 
+
 include('model/auto.php');
 
+
+
 $model = 'auto';
+
+$grid = array(
+	'parent' 		=> 'mygrid_container',
+	'image_path' 	=> "lib/dhtmlx/imgs/",
+	'skin' 			=> 'light',
+	'auto_height' 	=> true,
+	'auto_width' 	=> true,
+	'columns'		=> null,
+);
+
+foreach ($SCH[$model]['field'] as $key => $value) {
+	$grid['columns'][] = array(
+		'label' => $value['name'],
+		'width'	=> '80',
+		'type'	=> 'ed',
+	);
+}
+
+/*{
+	"parent":"mygrid_container",
+	"image_path":"lib/dhtmlx/imgs/",
+	"skin":"light",
+	"auto_height":true,
+	"auto_width":true,
+	"columns":[
+		{"label":null,"width":"80","type":"ed"},
+		{"label":null,"width":"80","type":"ed"}
+	]
+}*/
 ?>
 
 <link rel="stylesheet" type="text/css" href="lib/dhtmlx/dhtmlxgrid.css" />
@@ -14,6 +47,9 @@ $model = 'auto';
 <div id="mygrid_container" style="width:600px;height:150px;"></div>
 
 <script>
+new dhtmlXGridObject(<?=stripslashes(urldecode(json_encode($grid)))?>);
+
+/*
 var mygrid;
 mygrid = new dhtmlXGridObject('mygrid_container');
 mygrid.setImagePath("lib/dhtmlx/imgs/");
@@ -22,19 +58,39 @@ mygrid.setInitWidths("*,150,150");
 mygrid.setColAlign("left,right,right");
 mygrid.setSkin("light");
 mygrid.init();
+*/
+
+/*{
+"parent":"mygrid_container",
+"image_path":"lib/dhtmlx/imgs/",
+"skin":"light",
+"auto_height": true,
+"auto_width": true,
+"columns":[
+	{ label: "Sales",           width:50, 	type:"ed" },
+	{ label:["Book title",
+		 "#text_filter"],   width:150, 	type:"ed" },
+	{ label:["Author",
+		 "#select_filter"], width:150, 	type:"ed" },
+	{ label: "Price",       width:50, 	type:"ed" },
+	{ label:"In store" , 	width:80, 	type:"ch" },
+	{ label:"Shipping" , 	width:50, 	type:"ed" },
+	{ label:"Bestseller" , 	width:50, 	type:"ed" },
+	{ label:"Date" , 	width:50, 	type:"ed" }
+]}*/
 </script>
 
 
 
-<?//±êÌâ?>
+<?//æ ‡é¢˜?>
 <h2><?=$SCH[$model]['name']?></h2>
 
-<?//¶¥²¿°´Å¥Çø?>
+<?//é¡¶éƒ¨æŒ‰é’®åŒº?>
 <div style="margin-bottom:15px;">
-	<input type="button" value="Ìí¼Ó" />
+	<input type="button" value="æ·»åŠ " />
 </div>
 
-<?//×Ô¶¨Òå²éÑ¯É¸Ñ¡Æ÷?>
+<?//è‡ªå®šä¹‰æŸ¥è¯¢ç­›é€‰å™¨?>
 <div style="margin-bottom:15px;">
 	<? foreach ($SCH[$model]['field'] as $key => $value) : ?>
 		
@@ -42,41 +98,41 @@ mygrid.init();
 </div>
 
 
-<?//ÁĞ±í±í¸ñ?>
+<?//åˆ—è¡¨è¡¨æ ¼?>
 <table cellspacing="1" cellpadding="5" border="0" class="table">
-	<?//±íÍ·?>
+	<?//è¡¨å¤´?>
 	<tr>
 		<th width="20"></th>
 		<? foreach ($SCH[$model]['field'] as $key => $value) : ?>
 			<th>
 				<span style="float:left;"><?=$value['name']?></span>
 				<span style="float:right;">
-					<a href="">ÉıĞò</a> 
-					<a href="">½µĞò</a>
+					<a href="">å‡åº</a> 
+					<a href="">é™åº</a>
 				</span>
 			</th>
 		<? endforeach ?>
 	</tr>
 	
-	<?//²éÑ¯É¸Ñ¡Æ÷?>
+	<?//æŸ¥è¯¢ç­›é€‰å™¨?>
 	<tr>
 		<td></td>
 		<? foreach ($SCH[$model]['field'] as $key => $value) : ?>
 			<td>
 				<input type="text" name="<?=$key?>" value="" />
-				<input type="button" value="É¸Ñ¡" />
+				<input type="button" value="ç­›é€‰" />
 			</td>
 		<? endforeach ?>
 	</tr>
 	
-	<?//±í¸ñÄÚÈİÕıÎÄ?>
+	<?//è¡¨æ ¼å†…å®¹æ­£æ–‡?>
 	<? if ($list) : ?>
 		<? foreach ($list as $row) : ?>
 		
 		<? endforeach ?>
 	<? else : ?>
 		<tr height="50">
-			<td colspan="<?=count($SCH[$model]['field'])+1?>">Ä¿Ç°ÔİÎ´Ìí¼ÓÈÎºÎ¼ÇÂ¼</td>
+			<td colspan="<?=count($SCH[$model]['field'])+1?>">ç›®å‰æš‚æœªæ·»åŠ ä»»ä½•è®°å½•</td>
 		</tr>
 	<? endif ?>
 </table>

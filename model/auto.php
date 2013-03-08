@@ -1,13 +1,13 @@
 <?php
 $SCH['auto'] = array(
-	'name' => '³µÁ¾µµ°¸',
+	'name' => 'è½¦è¾†æ¡£æ¡ˆ',
 	'field' => array(
 		'plate_no' => array(
-			'name'		=> '³µÅÆºÅ',
+			'name'		=> 'è½¦ç‰Œå·',
 			'filter'	=> true,
 		),
 		'seat' => array(
-			'name'		=> '×ùÎ»Êı',
+			'name'		=> 'åº§ä½æ•°',
 			'filter'	=> true,
 		),
 	),
